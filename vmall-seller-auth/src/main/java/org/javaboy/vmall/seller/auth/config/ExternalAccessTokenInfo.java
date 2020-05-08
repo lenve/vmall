@@ -32,6 +32,7 @@ public class ExternalAccessTokenInfo implements TokenEnhancer {
         info.put("WeChat Official Accounts", "江南一点雨");
         info.put("GitHub", "https://github.com/lenve");
         additionalInformation.put("info", info);
+        additionalInformation.put("status", 200);
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInformation);
         return accessToken;
     }
