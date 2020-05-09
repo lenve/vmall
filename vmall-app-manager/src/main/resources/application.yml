@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: vmall-app-manager
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    username: root
+    password: 123
+    url: jdbc:mysql:///vmall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+eureka:
+  client:
+    service-url:
+      defaultZone: http://javaboy:123@localhost:8848/eureka
+server:
+  port: 8003

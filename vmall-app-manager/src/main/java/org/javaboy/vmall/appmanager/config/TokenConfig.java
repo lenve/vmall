@@ -1,4 +1,4 @@
-package org.javaboy.vmall.merchandise;
+package org.javaboy.vmall.appmanager.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

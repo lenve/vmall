@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+  size: Cookies.get('size') || 'mini' // set element-ui default size
 })
 
 // register global utility filters

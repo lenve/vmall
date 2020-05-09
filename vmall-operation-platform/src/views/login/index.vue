@@ -161,7 +161,6 @@ export default {
           this.loginForm.scope = 'seller-auth'
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
-              console.log('====================login success=====================')
               this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
               this.loading = false
             })
