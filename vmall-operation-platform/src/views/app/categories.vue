@@ -106,6 +106,15 @@
           <el-button>编辑</el-button>
         </el-table-column>
       </el-table>
+      <div style="display: flex;justify-content: flex-end;align-items: center">
+        <el-pagination
+          layout="sizes, prev, pager, next, jumper, ->, total, slot"
+          :total="total"
+          :page-sizes="[5,10,15,20]"
+          @current-change="currentChange"
+          @size-change="sizeChange"
+        />
+      </div>
     </div>
     <el-dialog
       title="添加类目"
@@ -123,7 +132,7 @@
               <el-input v-model="category.name" />
             </td>
             <td>
-              <el-tag>类目ICON：</el-tag>
+              <el-tag>类目图标：</el-tag>
             </td>
             <td>
               <el-upload
@@ -226,6 +235,7 @@ export default {
   name: 'Categories',
   data() {
     return {
+      total: 10,
       myHeaders: { Authorization: 'Bearer ' + getToken() },
       fileList: [],
       category: {
@@ -272,13 +282,21 @@ export default {
       }],
       state: null,
       name: null,
-      type: null
+      type: null,
+      size: 10,
+      page: 1
     }
   },
   mounted() {
     this.initCategories()
   },
   methods: {
+    currentChange(page) {
+      this.page = page
+    },
+    sizeChange(size) {
+      this.size = size
+    },
     showAddAppCategoriesView() {
       this.dialogVisible = true
     },
@@ -296,8 +314,15 @@ export default {
       this.initCategories()
     },
     initCategories() {
-      this.$store.dispatch('appmanager/getCategories', { name: this.name, state: this.state, type: this.type }).then((resp) => {
+      this.$store.dispatch('appmanager/getCategories', {
+        name: this.name,
+        state: this.state,
+        type: this.type,
+        page: this.page,
+        size: this.size
+      }).then((resp) => {
         this.categories = resp.data
+        this.total = resp.total
       })
     }
   }
