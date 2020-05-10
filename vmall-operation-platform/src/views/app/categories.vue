@@ -2,7 +2,7 @@
   <div class="app_categories_container">
     <div style="display: flex;justify-content: space-between;width: 70%">
       <div>类目名称：
-        <el-input style="width: 200px" />
+        <el-input v-model="name" style="width: 200px" />
       </div>
       <div>类目状态：
         <el-select v-model="state" placeholder="全部">
@@ -24,7 +24,7 @@
           />
         </el-select>
       </div>
-      <el-button type="primary">查询</el-button>
+      <el-button type="primary" @click="loadCategories">查询</el-button>
       <el-button type="primary" @click="showAddAppCategoriesView">添加</el-button>
     </div>
     <div style="margin-top: 30px">
@@ -270,8 +270,9 @@ export default {
         value: 5,
         label: '已结束'
       }],
-      state: '',
-      type: ''
+      state: null,
+      name: null,
+      type: null
     }
   },
   mounted() {
@@ -289,10 +290,13 @@ export default {
       this.initCategories()
     },
     onError() {
-      console.log('error')
+      this.dialogVisible = false
+    },
+    loadCategories() {
+      this.initCategories()
     },
     initCategories() {
-      this.$store.dispatch('appmanager/getCategories', null).then((resp) => {
+      this.$store.dispatch('appmanager/getCategories', { name: this.name, state: this.state, type: this.type }).then((resp) => {
         this.categories = resp.data
       })
     }
