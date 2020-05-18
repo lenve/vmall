@@ -14,3 +14,17 @@ export function addCategories(data) {
     data: data
   })
 }
+export function addAppTabs(data) {
+  return request({
+    url: '/appmanager/app/apptabs/',
+    method: 'post',
+    data: data
+  })
+}
+export function getAppTabs(data) {
+  return request({
+    url: '/appmanager/app/apptabs/',
+    method: 'get',
+    params: data
+  })
+}

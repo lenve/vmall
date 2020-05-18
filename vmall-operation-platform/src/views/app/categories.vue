@@ -66,7 +66,6 @@
           width="150"
         />
         <el-table-column
-          prop="state"
           label="状态"
           width="100"
         >
@@ -138,7 +137,6 @@
               <el-upload
                 ref="upload"
                 class="upload-container"
-                :data="category"
                 :multiple="false"
                 :limit="1"
                 :headers="myHeaders"

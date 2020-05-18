@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.javaboy.vmall.appmanager.mapper.AppTabsMapper" >
+  <resultMap id="BaseResultMap" type="org.javaboy.vmall.common.model.AppTabs" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="active_icon" property="activeIcon" jdbcType="VARCHAR" />
+    <result column="inactive_icon" property="inactiveIcon" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="last_update" property="lastUpdate" jdbcType="VARCHAR" />
+    <result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <select id="getAllAppTabsByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from app_tabs
+     <where>
+       <if test="name!=null">
+         and name=#{name},
+       </if>
+       <if test="state!=null">
+         and state=#{state},
+       </if>
+     </where>
+     limit #{page},#{size}
+  </select>
+  <select id="getTotal" resultType="java.lang.Long">
+    select count(*) from app_tabs
+    <where>
+      <if test="name!=null">
+        and name=#{name},
+      </if>
+      <if test="state!=null">
+        and state=#{state},
+      </if>
+    </where>
+  </select>
+  <sql id="Base_Column_List" >
+    id, name, active_icon, inactive_icon, state, weight,type,description, start_time, end_time, last_update,
+    last_update_time
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_tabs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from app_tabs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.javaboy.vmall.common.model.AppTabs" >
+    insert into app_tabs (id, name, active_icon, 
+      inactive_icon, state, weight, 
+      start_time, end_time, last_update, 
+      last_update_time, description)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{activeIcon,jdbcType=VARCHAR}, 
+      #{inactiveIcon,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{weight,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{lastUpdate,jdbcType=VARCHAR}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.javaboy.vmall.common.model.AppTabs" >
+    insert into app_tabs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="activeIcon != null" >
+        active_icon,
+      </if>
+      <if test="inactiveIcon != null" >
+        inactive_icon,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="lastUpdate != null" >
+        last_update,
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="activeIcon != null" >
+        #{activeIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="inactiveIcon != null" >
+        #{inactiveIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdate != null" >
+        #{lastUpdate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.javaboy.vmall.common.model.AppTabs" >
+    update app_tabs
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="activeIcon != null" >
+        active_icon = #{activeIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="inactiveIcon != null" >
+        inactive_icon = #{inactiveIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdate != null" >
+        last_update = #{lastUpdate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null" >
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.javaboy.vmall.common.model.AppTabs" >
+    update app_tabs
+    set name = #{name,jdbcType=VARCHAR},
+      active_icon = #{activeIcon,jdbcType=VARCHAR},
+      inactive_icon = #{inactiveIcon,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      last_update = #{lastUpdate,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.javaboy.vmall.common.model.AppTabs" >
+    update app_tabs
+    set name = #{name,jdbcType=VARCHAR},
+      active_icon = #{activeIcon,jdbcType=VARCHAR},
+      inactive_icon = #{inactiveIcon,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      last_update = #{lastUpdate,jdbcType=VARCHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

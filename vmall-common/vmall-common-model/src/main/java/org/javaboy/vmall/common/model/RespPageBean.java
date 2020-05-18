@@ -3,7 +3,7 @@ package org.javaboy.vmall.common.model;
 import java.util.List;
 
 /**
- * @作者 江南一点雨
+ * @author 江南一点雨
  * @微信公众号 江南一点雨
  * @网站 http://www.itboyhub.com
  * @国际站 http://www.javaboy.org

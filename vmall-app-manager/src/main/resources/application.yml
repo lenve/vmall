@@ -13,3 +13,6 @@ eureka:
       defaultZone: http://javaboy:123@localhost:8848/eureka
 server:
   port: 8003
+logging:
+  level:
+    org.javaboy.vmall.appmanager.mapper: debug
