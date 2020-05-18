@@ -8,6 +8,7 @@ zuul:
     vmall-seller-auth: /auth/**
     vmall-merchandise: /merchandise/**
     vmall-app-manager: /appmanager/**
+    vmall-file-server: /file/**
   sensitive-headers:
 eureka:
   client:

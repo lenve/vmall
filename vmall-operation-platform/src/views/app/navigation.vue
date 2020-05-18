@@ -1,5 +1,5 @@
 <template>
-  <div>导航label</div>
+  <div>导航Tab</div>
 </template>
 
 <script>

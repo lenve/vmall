@@ -142,11 +142,10 @@
                 :multiple="false"
                 :limit="1"
                 :headers="myHeaders"
-                :auto-upload="false"
                 :on-success="onSuccess"
                 :on-error="onError"
                 :file-list="fileList"
-                action="/appmanager/app/categories/"
+                action="/file/upload"
               >
                 <el-button size="mini" type="primary">选择图标</el-button>
               </el-upload>
@@ -283,6 +282,7 @@ export default {
       state: null,
       name: null,
       type: null,
+      icon: null,
       size: 10,
       page: 1
     }
@@ -301,14 +301,16 @@ export default {
       this.dialogVisible = true
     },
     doAddCategories() {
-      this.$refs.upload.submit()
+      this.$store.dispatch('appmanager/addCategories', this.category).then(resp => {
+        this.dialogVisible = false
+        this.initCategories()
+      })
     },
-    onSuccess() {
-      this.dialogVisible = false
-      this.initCategories()
+    onSuccess(response, file, fileList) {
+      this.category.icon = response.data
     },
-    onError() {
-      this.dialogVisible = false
+    onError(err, file, fileList) {
+      console.log(err)
     },
     loadCategories() {
       this.initCategories()

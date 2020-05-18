@@ -9,3 +9,4 @@
 |vmall-seller-auth|8001|vmall 商家统一认证中心|
 |vmall-merchandise|8002|vmall 商品中心|
 |vmall-app-manager|8003|vmall App 管理中心|
+|vmall-file-server|8004|vmall 文件服务|

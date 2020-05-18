@@ -7,3 +7,10 @@ export function getCategories(data) {
     params: data
   })
 }
+export function addCategories(data) {
+  return request({
+    url: '/appmanager/app/categories/',
+    method: 'post',
+    data: data
+  })
+}

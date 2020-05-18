@@ -61,6 +61,20 @@ public class ResourceServerConfig {
 
     @Configuration
     @EnableResourceServer
+    public class FileServerConfig extends ResourceServerConfigurerAdapter {
+        @Override
+        public void configure(HttpSecurity http) throws Exception {
+            http.authorizeRequests().antMatchers("/file/**").permitAll();
+        }
+
+        @Override
+        public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+            resources.resourceId(resourceId).tokenStore(tokenStore);
+        }
+    }
+
+    @Configuration
+    @EnableResourceServer
     public class MerchandiseServerConfig extends ResourceServerConfigurerAdapter {
         @Override
         public void configure(HttpSecurity http) throws Exception {

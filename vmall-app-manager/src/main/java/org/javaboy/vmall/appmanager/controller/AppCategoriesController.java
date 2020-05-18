@@ -6,12 +6,6 @@ import org.javaboy.vmall.common.model.RespBean;
 import org.javaboy.vmall.common.model.RespPageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
 
 /**
  * @作者 江南一点雨
@@ -29,27 +23,12 @@ public class AppCategoriesController {
     AppCategoriesService appCategoriesService;
 
     @PostMapping("/")
-    public RespBean addAppCategories(AppCategories appCategories, MultipartFile file, HttpServletRequest req) {
-        String realPath = req.getServletContext().getRealPath("/icon/");
-        File folder = new File(realPath);
-        if (!folder.exists()) {
-            folder.mkdirs();
+    public RespBean addAppCategories(@RequestBody AppCategories appCategories) {
+        if (appCategoriesService.addAppCategories(appCategories) == 1) {
+            return RespBean.ok("添加成功");
+        } else {
+            return RespBean.error("添加失败");
         }
-        String oldName = file.getOriginalFilename();
-        String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf("."));
-        try {
-            file.transferTo(new File(folder, newName));
-            String url = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/icon/" + newName;
-            appCategories.setIcon(url);
-            if (appCategoriesService.addAppCategories(appCategories) == 1) {
-                return RespBean.ok("添加成功");
-            } else {
-                return RespBean.error("添加失败");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return RespBean.error("添加失败");
     }
 
     @GetMapping("/")

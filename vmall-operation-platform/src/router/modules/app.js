@@ -21,7 +21,7 @@ const appRouter = {
       path: 'navigation',
       component: () => import('@/views/app/navigation'),
       name: 'Navigation',
-      meta: { title: '导航label', noCache: true }
+      meta: { title: '导航Tab', noCache: true }
     },
     {
       path: 'banner',
