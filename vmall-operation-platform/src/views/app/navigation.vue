@@ -14,7 +14,7 @@
           />
         </el-select>
       </div>
-      <el-button type="primary" @click="loadCategories">查询</el-button>
+      <el-button type="primary" @click="initAppTabs">查询</el-button>
       <el-button type="primary" @click="showAddAppTabsView">添加</el-button>
     </div>
     <div style="margin-top: 30px">
@@ -190,7 +190,7 @@
               <el-tag>权重：</el-tag>
             </td>
             <td>
-              <el-input-number v-model="apptab.weight" :min="1" :max="10" />
+              <el-input-number v-model="apptab.weight" :min="1" :max="10000" />
             </td>
           </tr>
           <tr>
@@ -330,11 +330,13 @@ export default {
     activeError(err, file, fileList) {
       console.log(err)
     },
-    loadCategories() {
-      this.initAppTabs()
-    },
     initAppTabs() {
-      this.$store.dispatch('appmanager/getAppTabs', null).then((resp) => {
+      this.$store.dispatch('appmanager/getAppTabs', {
+        name: this.name,
+        state: this.state,
+        size: this.size,
+        page: this.page
+      }).then((resp) => {
         this.apptabs = resp.data
         this.total = resp.total
       })

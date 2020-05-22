@@ -35,8 +35,6 @@ public class AppTabsService {
     public Integer addAppTabs(AppTabs appTabs) {
         appTabs.setLastUpdateTime(new Date());
         appTabs.setLastUpdate(SecurityContextHolder.getContext().getAuthentication().getName());
-        //默认状态
-        appTabs.setState(0);
         if (appTabs.getType() == 0) {
             appTabs.setStartTime(null);
             appTabs.setEndTime(null);

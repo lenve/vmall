@@ -9,7 +9,7 @@ class VmallSellerAuthApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(new BCryptPasswordEncoder().encode("123"));
+        System.out.println("   v  h  r".replaceAll("\\s*",""));
     }
 
 }

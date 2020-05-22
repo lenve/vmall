@@ -20,11 +20,11 @@
     <include refid="Base_Column_List" />
      from app_tabs
      <where>
-       <if test="name!=null">
-         and name=#{name},
+       <if test="name!=null and name!=''">
+         and name=#{name}
        </if>
        <if test="state!=null">
-         and state=#{state},
+         and state=#{state}
        </if>
      </where>
      limit #{page},#{size}
@@ -32,11 +32,11 @@
   <select id="getTotal" resultType="java.lang.Long">
     select count(*) from app_tabs
     <where>
-      <if test="name!=null">
-        and name=#{name},
+      <if test="name!=null and name!=''">
+        and name=#{name}
       </if>
       <if test="state!=null">
-        and state=#{state},
+        and state=#{state}
       </if>
     </where>
   </select>
