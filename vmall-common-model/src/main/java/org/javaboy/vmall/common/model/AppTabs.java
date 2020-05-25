@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 /**
- * 
+ * @author 江南一点雨
+ * @微信 a_java_boy
  */
 public class AppTabs {
     private Integer id;
