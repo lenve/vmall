@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.javaboy.vmall</groupId>
         <artifactId>vmall-parent</artifactId>
-        <version>0.0.1.Alpha</version>
+        <version>0.1.0.Alpha</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.javaboy.vmall</groupId>
