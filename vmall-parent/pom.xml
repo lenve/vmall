@@ -23,6 +23,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <mybatis.version>2.1.1</mybatis.version>
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -42,10 +43,20 @@
                 <scope>import</scope>
             </dependency>
 
+            <!--项目依赖-->
             <dependency>
                 <groupId>org.javaboy.vmall</groupId>
                 <artifactId>vmall-common-model</artifactId>
                 <version>${version}</version>
+            </dependency>
+
+            <!--阿里cloud依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
