@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: vmall-file-server
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8004
+eureka:
+  client:
+    service-url:
+      defaultZone: http://javaboy:123@localhost:8848/eureka

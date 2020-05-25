@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: vmall-merchandise
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://javaboy:123@localhost:8848/eureka
+server:
+  port: 8002
