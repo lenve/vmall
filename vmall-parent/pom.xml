@@ -8,8 +8,6 @@
     <artifactId>vmall-parent</artifactId>
     <version>0.1.0.Alpha</version>
     <packaging>pom</packaging>
-
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -42,6 +40,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javaboy.vmall</groupId>
+                <artifactId>vmall-common-model</artifactId>
+                <version>${version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
