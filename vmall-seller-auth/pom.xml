@@ -3,27 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.javaboy.vmall</groupId>
+        <artifactId>vmall</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.javaboy.vmall</groupId>
     <artifactId>vmall-seller-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>vmall-seller-auth</name>
     <description>vmall 商户统一认证中心</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.javaboy.vmall</groupId>
             <artifactId>vmall-common-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,7 +39,6 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -66,18 +56,6 @@
             </exclusions>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <resources>
