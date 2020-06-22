@@ -1,5 +1,7 @@
 package org.javaboy.vmall.appmanager.service;
 
+import com.muggle.code.SimpleCodeTemplate;
+import com.muggle.code.TableMessage;
 import org.javaboy.vmall.appmanager.mapper.AppCategoriesMapper;
 import org.javaboy.vmall.common.model.AppCategories;
 import org.javaboy.vmall.common.model.RespPageBean;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -35,5 +38,21 @@ public class AppCategoriesService {
         List<AppCategories> data = appCategoriesMapper.getAllAppcategoriesByPage(page, size, state, type, name);
         Long total = appCategoriesMapper.getTotal(state, type, name);
         return RespPageBean.ok(total, data);
+    }
+
+    public static void main(String[] args) {
+        TableMessage tableMessage = new TableMessage();
+        tableMessage.setUsername("root");
+        tableMessage.setSwagger(true);
+        tableMessage.setTableName(Arrays.asList("oa_role"));
+        tableMessage.setAuthor("muggle");
+        tableMessage.setBasePack("org.javaboy.vmall");
+        tableMessage.setDriver("com.mysql.jdbc.Driver");
+        tableMessage.setJdbcUrl("jdbc:mysql:///vmall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
+        tableMessage.setModule("vmall");
+        tableMessage.setPassword("root");
+        tableMessage.setSwagger(true);
+        SimpleCodeTemplate simpleCodeTemplate = new SimpleCodeTemplate(tableMessage);
+        simpleCodeTemplate.createCode();
     }
 }
