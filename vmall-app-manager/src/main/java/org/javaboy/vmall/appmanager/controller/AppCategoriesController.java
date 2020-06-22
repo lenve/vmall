@@ -22,7 +22,7 @@ public class AppCategoriesController {
     @Autowired
     AppCategoriesService appCategoriesService;
 
-    @PostMapping("/add_appcategories")
+    @PostMapping("/")
     public RespBean addAppCategories(@RequestBody AppCategories appCategories) {
         if (appCategoriesService.addAppCategories(appCategories) == 1) {
             return RespBean.ok("添加成功");
