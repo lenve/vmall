@@ -22,7 +22,7 @@ public class AppCategoriesController {
     @Autowired
     AppCategoriesService appCategoriesService;
 
-    @PostMapping("/")
+    @PostMapping("/add_appcategories")
     public RespBean addAppCategories(@RequestBody AppCategories appCategories) {
         if (appCategoriesService.addAppCategories(appCategories) == 1) {
             return RespBean.ok("添加成功");
@@ -31,7 +31,7 @@ public class AppCategoriesController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping("/appcategories")
     public RespPageBean getAllAppcategoriesByPage(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size, Integer state, Integer type, String name) {
         RespPageBean respPageBean = appCategoriesService.getAllAppcategoriesByPage(page, size, state, type, name);
         return respPageBean;
