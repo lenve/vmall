@@ -17,3 +17,10 @@
 |vmall-merchandise|8002|vmall 商品中心|
 |vmall-app-manager|8003|vmall App 管理中心|
 |vmall-file-server|8004|vmall 文件服务|
+
+### muggle 备忘录
+```java
+
+ 1. 开发任务 首页banner管理，启动页
+ 2. 文件上传统一接口  vmall-file-server/src/main/java/org/javaboy/vmall/file/server/controller/FileManagerController.java
+```
